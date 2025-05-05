@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+  <head>
+    <title>Steam Games By Players</title>
+    <!--<link href="assets/reset.css" rel="stylesheet" />-->
+    <link href="assets/style.css" rel="stylesheet" />
+    <script type="module" src="./js/index.js" defer></script>
+  </head>
+  <body>
+    <h1>Steam Games By Players</h1>
+    <div class="searchAndList">
+      <form id="searchForm">
+        <input type="text" id="search" placeholder="Search" />
+        <input type="submit" value="submit" class="button" />
+      </form>
+      <div class="filters">
+        <input id="filter-collapsible" class="toggle" type="checkbox">
+        <label for="filter-collapsible" class="lbl-toggle">
+          <div>filters</div>
+        </label>
+        <div id="filters" class="collapsible-content">
+          <span class="no-filters">No filters available</span>
+        </div>
+      </div>
+      <div id="gameList">
+        <!-- <div class="game">
+          <img src="${item._image}" alt="">
+          <div>
+            <span class="name">${item._name}</span>
+            <span class="playerCount">${item._playerCount} playing</span>
+          </div>
+          <span class="rank">${item._rank}</span>
+        </div> -->
+      </div>
+    </div>
+    <div class="graph">
+      <canvas id="donut"></canvas>
+      <canvas id="bar"></canvas>
+    </div>
+  </body>
+</html>
+
