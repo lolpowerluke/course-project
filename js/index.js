@@ -14,12 +14,12 @@ function init() {
 }
 
 async function fetchData() {
-  const data = await fetch("https://dev2-cors.onrender.com/https://api.steampowered.com/ISteamChartsService/GetGamesByConcurrentPlayers/v1/?key=C5D9BAF11CE146F89B2D7193A0C38627");
+  const data = await fetch("https://api.steampowered.com/ISteamChartsService/GetGamesByConcurrentPlayers/v1/?key=C5D9BAF11CE146F89B2D7193A0C38627");
   const myData = await data.json();
   let dataArray = myData.response.ranks;
 
   for (const item of dataArray) {
-    const data = await fetch(`https://dev2-cors.onrender.com/https://store.steampowered.com/api/appdetails?appids=${item.appid}&key=C5D9BAF11CE146F89B2D7193A0C38627`);
+    const data = await fetch(`https://store.steampowered.com/api/appdetails?appids=${item.appid}&key=C5D9BAF11CE146F89B2D7193A0C38627`);
     const myData = await data.json();
     if (myData[item.appid].success == true) {
       let gameData = myData[item.appid].data;
