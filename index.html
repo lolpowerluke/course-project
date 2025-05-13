@@ -4,8 +4,9 @@
     <!--<link href="assets/reset.css" rel="stylesheet" />-->
     <link href="assets/style.css" rel="stylesheet" />
     <script type="module" src="./js/index.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.js" integrity="sha512-d6nObkPJgV791iTGuBoVC9Aa2iecqzJRE0Jiqvk85BhLHAPhWqkuBiQb1xz2jvuHNqHLYoN3ymPfpiB1o+Zgpw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   </head>
-  <body>
+    <body>
     <h1>Steam Games By Players</h1>
     <div class="searchAndList">
       <form id="searchForm">
@@ -37,5 +38,31 @@
       <canvas id="bar"></canvas>
     </div>
   </body>
-</html>
+  <script>
+    const data = [
+      { year: 2010, count: 10 },
+      { year: 2011, count: 20 },
+      { year: 2012, count: 15 },
+      { year: 2013, count: 25 },
+      { year: 2014, count: 22 },
+      { year: 2015, count: 30 },
+      { year: 2016, count: 28 },
+    ];
 
+    new Chart(
+      document.getElementById('donut'),
+      {
+        type: 'pie',
+        data: {
+          labels: data.map(row => row.year),
+          datasets: [
+            {
+              label: 'Acquisitions by year',
+              data: data.map(row => row.count)
+            }
+          ]
+        }
+      }
+    );
+  </script>
+</html>

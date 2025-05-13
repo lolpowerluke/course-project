@@ -23,13 +23,15 @@ async function fetchData() {
     const myData = await data.json();
     if (myData[item.appid].success == true) {
       let gameData = myData[item.appid].data;
-      const gameObject = new Game(item.rank, item.appid, item.concurrent_in_game, item.peak_in_game, gameData.name, gameData.header_image, gameData.short_description, gameData.website, gameData.developers, gameData.genres, gameData.platforms);
-      origArray.push(gameObject);
+      if (item.rank && item.appid && item.concurrent_in_game && item.peak_in_game && gameData.name && gameData.header_image && gameData.short_description && gameData.website && gameData.developers && gameData.genres && gameData.platforms) {
+        const gameObject = new Game(item.rank, item.appid, item.concurrent_in_game, item.peak_in_game, gameData.name, gameData.header_image, gameData.short_description, gameData.website, gameData.developers, gameData.genres, gameData.platforms);
+        origArray.push(gameObject);
+      }
     }
   }
   
   renderList();
-  genFilters(origArray)
+  genFilters(origArray);
 }
 
 function genFilters(array) {
@@ -168,10 +170,6 @@ function renderList() {
     html += `<div class="game"><img src="${item._image}" alt="img ${item._name}"><div><span class="name">${item._name}</span><span class="playerCount">${item._playerCount} playing</span></div><span class="rank">${item._rank}</span></div>`
   });
   document.getElementById("gameList").innerHTML = html;
-}
-
-function renderGraphs(array) {
-  
 }
 
 init()
